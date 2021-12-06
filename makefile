@@ -52,3 +52,11 @@ kind-status:
 	kubectl get nodes -o wide
 	kubectl get svc -o wide
 	kubectl get pods -o wide --watch --all-namespaces
+
+kind-describe:
+	kubectl describe nodes
+	kubectl describe svc
+	kubectl describe pod -l app=sales
+
+kind-describe-deployment:
+	kubectl describe deployment sales-pod
