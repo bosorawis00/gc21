@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 run:
-	go run app/services/sales-api/main.go
+	go run app/services/sales-api/main.go | go run app/tooling/logfmt/main.go -service=SALES-API
 
 tidy:
 	go mod tidy
@@ -57,7 +57,7 @@ kind-status-sales:
 	kubectl get pods -o wide --watch --namespace=sales-system
 
 kind-logs-sales:
-	kubectl logs -l app=sales --all-containers=true -f --tail=100 
+	kubectl logs -l app=sales --all-containers=true -f --tail=100 | go run app/tooling/logfmt/main.go -service=SALES-API
 
 kind-status:
 	kubectl get nodes -o wide
