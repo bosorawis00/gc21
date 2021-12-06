@@ -1,7 +1,11 @@
 SHELL := /bin/bash
 
 run:
-	go run app/service/sales-api/main.go
+	go run app/services/sales-api/main.go
+
+tidy:
+	go mod tidy
+	go mod vendor
 
 # ==============================================================================
 
