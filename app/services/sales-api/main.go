@@ -11,7 +11,7 @@ import (
 var build = "develop"
 
 func main() {
-	log.Println("starting service, build:", build)
+	log.Println("starting service YES, build:", build)
 	defer log.Println("shutdown")
 
 	shutdown := make(chan os.Signal, 1)

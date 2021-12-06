@@ -6,7 +6,7 @@ run:
 # ==============================================================================
 
 # $(shell git rev-parse --short HEAD)
-VERSION := 2.0
+VERSION := 1.0
 
 sales-api:
 	docker build \
@@ -46,6 +46,8 @@ kind-restart:
 	kubectl rollout restart deployment sales-pod
 
 kind-update: sales-api kind-load kind-restart
+
+kind-update-apply: all kind-load kind-apply
 
 kind-status-sales:
 	kubectl get pods -o wide --watch --namespace=sales-system
