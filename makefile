@@ -33,6 +33,18 @@ kind-up:
 		--config zarf/k8s/kind/kind-config.yaml
 # kubectl config set-context --current --namespace=sales-system
 
+kind-load:
+	kind load docker-image sales-api-amd64:$(VERSION) --name $(KIND_CLUSTER)
+
+kind-apply:
+	kustomize build zarf/k8s/base/sales-pod | kubectl apply -f -
+
+kind-status-sales:
+	kubectl get pods -o wide --watch --namespace=sales-system
+
+kind-logs-sales:
+	kubectl logs -l app=sales --all-containers=true -f --tail=100 
+
 kind-status:
 	kubectl get nodes -o wide
 	kubectl get svc -o wide
