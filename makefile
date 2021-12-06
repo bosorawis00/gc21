@@ -8,8 +8,6 @@ run:
 # $(shell git rev-parse --short HEAD)
 VERSION := 1.0
 
-all: sales-api
-
 sales-api:
 	docker build \
 		-f zarf/docker/dockerfile.sales-api \
