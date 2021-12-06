@@ -47,7 +47,7 @@ kind-restart:
 
 kind-update: sales-api kind-load kind-restart
 
-kind-update-apply: all kind-load kind-apply
+kind-update-apply: sales-api kind-load kind-apply
 
 kind-status-sales:
 	kubectl get pods -o wide --watch --namespace=sales-system
