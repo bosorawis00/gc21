@@ -8,6 +8,7 @@ import (
 	"syscall"
 
 	"github.com/ardanlabs/service/foundation/logger"
+	"go.uber.org/automaxprocs/maxprocs"
 	"go.uber.org/zap"
 )
 
@@ -39,10 +40,10 @@ func run(log *zap.SugaredLogger) error {
 
 	// Set the correct number of threads for the service
 	// based on what is available either by the machine or quotas.
-	// if _, err := maxprocs.Set(); err != nil {
-	// 	return fmt.Errorf("maxprocs: %w", err)
-	// }
-	log.Infow("startup", "GOMAXPROCS", runtime.GOMAXPROCS(0))
+	if _, err := maxprocs.Set(); err != nil {
+		return fmt.Errorf("maxprocs: %w", err)
+	}
+	log.Infow("startup", "build", build, "GOMAXPROCS", runtime.GOMAXPROCS(0))
 
 	// Make a channel to listen for an interrupt or terminate signal from the OS.
 	// Use a buffered channel because the signal package requires it.
