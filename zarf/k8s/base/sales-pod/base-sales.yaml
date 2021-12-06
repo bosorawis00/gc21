@@ -35,3 +35,6 @@ spec:
   selector:
     app: sales
   ports:
+  - name: sales-api
+    port: 3000
+    targetPort: sales-api

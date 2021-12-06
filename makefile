@@ -6,7 +6,7 @@ run:
 # ==============================================================================
 
 # $(shell git rev-parse --short HEAD)
-VERSION := 1.0
+VERSION := 2.0
 
 sales-api:
 	docker build \
