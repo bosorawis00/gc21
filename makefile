@@ -1,3 +1,6 @@
+# Access metrics directly (4000) or through the sidecar (3001)
+# expvarmon -ports=":4000" -vars="build,requests,goroutines,errors,panics,mem:memstats.Alloc"
+
 SHELL := /bin/bash
 
 run:
